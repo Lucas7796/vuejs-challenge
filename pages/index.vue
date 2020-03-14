@@ -8,15 +8,11 @@
               <v-subheader>
                 FIRST LIST
               </v-subheader>
-              <draggable v-model="items">
-                <template v-for="item in items">
-                  <v-list-item :key="item.id" avatar>
-                    <v-list-item-avatar>
-                      <img :src="item.avatar">
-                    </v-list-item-avatar>
+              <draggable v-model="columns[0]" group="people" >
+                <template v-for="item in columns[0]">
+                  <v-list-item :key="item.id">
                     <v-list-item-content>
                       <v-list-item-title v-html="item.title" />
-                      <v-list-item-sub-title v-html="item.subtitle" />
                     </v-list-item-content>
                   </v-list-item>
                 </template>
@@ -28,15 +24,11 @@
               <v-subheader>
                 SECOND LIST
               </v-subheader>
-              <draggable v-model="items2">
-                <template v-for="item in items2">
-                  <v-list-item :key="item.id" avatar>
-                    <v-list-item-avatar>
-                      <img :src="item.avatar">
-                    </v-list-item-avatar>
+              <draggable v-model="columns[1]" group="people" >
+                <template v-for="item in columns[1]">
+                  <v-list-item :key="item.id">
                     <v-list-item-content>
                       <v-list-item-title v-html="item.title" />
-                      <v-list-item-sub-title v-html="item.subtitle" />
                     </v-list-item-content>
                   </v-list-item>
                 </template>
@@ -55,6 +47,31 @@ import draggable from 'vuedraggable'
 export default {
   components: {
     draggable
+  },
+
+  created () {
+    console.log(this.columns)
+  },
+
+  data () {
+    return {
+      columns: [
+        [
+          {
+            id: 1,
+            title: 'task1'
+          },
+          {
+            id: 2,
+            title: 'task2'
+          },
+          {
+            id: 3,
+            title: 'task3'
+          }
+        ]
+      ]
+    }
   }
 }
 </script>
