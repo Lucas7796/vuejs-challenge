@@ -2,21 +2,14 @@
 
 > dragn and drop project made with vuejs
 
+In this challenge I used the framework VueJs along with the library draggableJs to make a kanban styled board
+
 ## Build Setup
 
 ``` bash
-# install dependencies
+# to install dependencies use:
 $ npm run install
 
-# serve with hot reload at localhost:3000
+# to run at localhost:3000:
 $ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
 ```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
