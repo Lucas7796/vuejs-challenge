@@ -50,6 +50,12 @@ export default {
   */
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    defaultAssets :{
+      font: {
+        family: 'Roboto' 
+      },
+      icons: 'md'
+    }
   },
   /*
   ** Build configuration

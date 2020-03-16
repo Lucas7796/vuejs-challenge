@@ -3,50 +3,61 @@ import Vuex from 'vuex'
 const createStore = () => {
   return new Vuex.Store({
     state: {
-      columns: [{
-        id: 1,
-        title: 'column1',
-        items: [
-          {
-            id: 1,
-            title: 'task1'
-          },
-          {
-            id: 2,
-            title: 'task2'
-          },
-          {
-            id: 3,
-            title: 'task3'
-          }
-        ]
-      },
-      {
-        id: 2,
-        title: 'column2',
-        items: [
-          {
-            id: 1,
-            title: 'task1'
-          },
-          {
-            id: 2,
-            title: 'task2'
-          },
-          {
-            id: 3,
-            title: 'task4'
-          }
-        ]
-      }]
+      columns: [
+      ],
+      columnIdCounter: 0,
+      itemIdCounter: 0
     },
     mutations: {
+      setItemIdCounter (state, payload) {
+        state.itemIdCounter = payload
+      },
+      setColumnIdCounter (state, payload) {
+        state.columnIdCounter = payload
+      },
+      setColumns (state, payload) {
+        state.columns = payload
+      },
+      deleteColumn (state, columnId) {
+        state.columns = state.columns.filter((column) => {
+          return column.id !== columnId
+        })
+      }
     },
     actions: {
+      incrementItemIdCounter (context) {
+        const payload = context.getters.getItemIdCounter + 1
+        context.commit('setItemIdCounter', payload)
+      },
+      incrementColumnIdCounter (context) {
+        const payload = context.getters.getColumnIdCounter + 1
+        context.commit('setColumnIdCounter', payload)
+      },
+      registerColumns (context, title) {
+        const columnID = context.getters.getColumnIdCounter
+        context.getters.getColumns.push({
+          id: columnID + 1,
+          title,
+          items: []
+        })
+        context.commit('setColumnIdCounter', columnID + 1)
+      },
+      setColumns (context, payload) {
+        context.commit('setColumns', payload)
+      },
+      deleteColumn (context, columnId) {
+        context.commit('deleteColumn', columnId)
+      }
     },
     getters: {
       getColumns (state) {
         return state.columns
+      },
+      getColumnIdCounter (state) {
+        return state.columnIdCounter
+      },
+      getItemIdCounter (state) {
+        return state.itemIdCounter
       }
     }
   })
