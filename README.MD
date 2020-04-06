@@ -8,7 +8,7 @@ In this challenge I used the framework VueJs along with the library draggableJs 
 
 ``` bash
 # to install dependencies use:
-$ npm run install
+$ npm install
 
 # to run at localhost:3000:
 $ npm run dev
